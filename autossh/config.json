@@ -1,6 +1,6 @@
 {
   "name": "AutoSSH Tunnel for Home Assistant",
-  "version": "2022.22.20",
+  "version": "2022.02.22",
   "slug": "racksync-autossh",
   "description": "A SSH Tunnel for Home Assistant by RACKSYNC.COM",
   "url": "https://www.racksync.com",
