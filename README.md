@@ -37,10 +37,3 @@ force_keygen: false
 
 - [Home Automation Thailand](https://www.facebook.com/groups/hathailand)
 - [Home Automation Marketplace](https://www.facebook.com/groups/hatmarketplace)
-
-### เพิ่มเติม
-
-- [ ] Add Note Input Field 
-- [X] Re-factor Slug URL
-- [X] Fix a tiny container bug :tada:
-
