@@ -17,14 +17,11 @@ force_keygen: false
 ```
 
 
-![racksync-screenshot](https://github.com/racksync/hass-addons-autossh-tunnel/blob/master/autossh.png)
-
-
 ## หากพบปัญหาในการใช้งาน กรุณาส่งเข้า issue
 
 ### บริการและเทรนนิ่งคอร์สด้าน Automation 
 
-- [สินค้าและบริการ](http://racksync.com)
+- [สินค้าและบริการ](https://racksync.com)
 - [เทรนนิ่งคอร์ส](https://facebook.com/racksync)
 
 ### ชุมชนและแหล่งซื้อขาย Home Automation
