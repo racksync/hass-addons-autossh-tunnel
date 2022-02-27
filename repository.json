@@ -1,5 +1,3 @@
-{
-    "name": "Home Assistant AutoSSH Tunnel",
-    "url": "https://github.com/racksync/hass-addons-autossh-tunnel",
-    "maintainer": "RACKSYNC CO., LTD."
-}
+"name": "RACKSYNC DEV - AutoSSH Tunnel"
+"url": "https://github.com/racksync/hass-addons-autossh-tunnel"
+"maintainer": "RACKSYNC CO., LTD. <jack@racksync.com>"
