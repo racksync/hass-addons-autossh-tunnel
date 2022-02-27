@@ -1,9 +1,3 @@
-# Home Assistant Cloudflared Argo Tunnel
-
-## ข้อควรทราบ ###
-
-addon ตัวนี้เหมาะสำหรับคนที่มี server ให้บริการหรือ HASS ทำเป็น SaaS อยู่และต้องการ ssh tunnel เพื่อสำรองหรือเชื่อมต่อ service ภายในที่รันอยู่บน system เดียวกัน โดยไม่ต้องทำ vpn หรือ forward port โดย addon จะรันทุกครั้งที่ระบบ start ขึ้นมา 
-
 ## วิธีใช้ 
 
 1. ติดตั้ง addon ด้วยการ add repository : https://github.com/racksync/hass-addons-autossh-tunnel เข้าไปยัง addon list ตามปกติ
@@ -23,14 +17,11 @@ force_keygen: false
 ```
 
 
-![racksync-screenshot](https://github.com/racksync/hass-addons-autossh-tunnel/blob/master/autossh.png)
-
-
 ## หากพบปัญหาในการใช้งาน กรุณาส่งเข้า issue
 
 ### บริการและเทรนนิ่งคอร์สด้าน Automation 
 
-- [สินค้าและบริการ](http://racksync.com)
+- [สินค้าและบริการ](https://racksync.com)
 - [เทรนนิ่งคอร์ส](https://facebook.com/racksync)
 
 ### ชุมชนและแหล่งซื้อขาย Home Automation

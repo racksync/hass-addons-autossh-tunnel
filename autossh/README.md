@@ -28,4 +28,3 @@ force_keygen: false
 
 - [Home Automation Thailand](https://www.facebook.com/groups/hathailand)
 - [Home Automation Marketplace](https://www.facebook.com/groups/hatmarketplace)
-
