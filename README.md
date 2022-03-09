@@ -7,15 +7,18 @@
 
 
 ```
-hostname: '[SERVER]'
+hostname: '[SERVER-ADDRESS]'
 ssh_port: 22
-username: autossh
+username: root
 remote_forwarding:
-  - 127.0.0.1:8123:172.17.0.1:8123
+  - 127.0.0.1:8123:192.168.0.10:8123
 other_ssh_options: '-v'
 force_keygen: false
 ```
+## ข้อควรระวัง
 
+- บน production ไม่ควร login ด้วย root
+- ไม่ควร expose port ไปที่ 0.0.0.0 หรือ public address (ควรใช้ร่วมกับ reverse proxy) 
 
 ## หากพบปัญหาในการใช้งาน กรุณาส่งเข้า issue
 
