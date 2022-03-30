@@ -1,6 +1,6 @@
 {
   "name": "AutoSSH Tunnel for Home Assistant",
-  "version": "2022.03.10",
+  "version": "2022.03.31",
   "slug": "racksync-autossh-tunnel",
   "description": "A SSH Tunnel for Home Assistant by RACKSYNC.COM",
   "url": "https://www.racksync.com",
@@ -13,7 +13,7 @@
     "hostname": "server-address",
     "ssh_port": 22,
     "username": "autossh",
-    "remote_forwarding": ["127.0.0.1:38123:192.168.0.10:8123"],
+    "remote_forwarding": ["127.0.0.1:8080:192.168.0.10:80"],
     "other_ssh_options": "-v",
     "force_keygen": false,
     "description": "take note here"
@@ -25,6 +25,6 @@
     "remote_forwarding": ["str"],
     "other_ssh_options": "str",
     "force_keygen": "bool",
-    "usernote": "str"
+    "description": "str"
   }
 }
