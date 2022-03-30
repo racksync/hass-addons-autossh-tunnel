@@ -25,4 +25,4 @@ jobs:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
       uses: pullreminders/slack-action@master
       with:
-        args: '{\"channel\":\"C039879A98V\",\"text\":\"hass-addons-autossh-tunnal has been pull requested\"}'
+        args: '{\"channel\":\"C039879A98V\",\"text\":\"pull requested to hass-addons-autossh-tunnal\"}'
