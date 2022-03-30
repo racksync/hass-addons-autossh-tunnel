@@ -20,9 +20,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Notify slack
-    env:
-      SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-    uses: pullreminders/slack-action@master
-    with:
-      args: '{\"channel\":\"C039879A98V\",\"text\":\"hass-addons-autossh-tunnal : pull requested\"}'
+    - name: Notify slack
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      uses: pullreminders/slack-action@master
+      with:
+        args: '{\"channel\":\"C039879A98V\",\"text\":\"hass-addons-autossh-tunnal : pull requested\"}'
