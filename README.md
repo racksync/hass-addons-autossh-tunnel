@@ -5,7 +5,6 @@
 3. start adddon แล้วเข้าไปยัง logs tab ของ addon เพื่อก๊อปปี้ public key ไปยัง ~/.ssh/authorized_keys
 4. restart addon อีกครั้ง
 
-
 ```
 hostname: '[SERVER-ADDRESS]'
 ssh_port: 22
