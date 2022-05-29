@@ -6,7 +6,7 @@
 4. restart addon อีกครั้ง
 
 ```
-hostname: [YOUR-SERVER-ADDRESS]
+hostname: [SERVER-ADDRESS]
 ssh_port: 22
 username: root
 remote_forwarding:
