@@ -1,0 +1,41 @@
+version: 2022.07.19
+slug: racksync-autossh-tunnel
+name: AutoSSH Tunnel for Home Assistant
+description: A SSH Tunnel for Home Assistant from RACKSYNC.COM
+url: https://github.com/racksync/hass-addons-autossh-tunnel
+codenotary: devops@racksync.com
+ingress: false
+init: false
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+startup: system
+hassio_api: false
+boot: auto
+host_network: true
+apparmor: false
+host_pid: true
+homeassistant: 2022.7.5
+advanced: true
+stage: experimental
+map: 
+  - config:rw
+options: 
+  hostname: 'destination-address'
+  ssh_port: 22
+  username: 'autossh'
+  remote_forwarding: 
+    - 127.0.0.1:8080:192.168.0.10:80
+  other_ssh_options: '-v'
+  force_keygen: false
+schema: 
+  hostname: str
+  ssh_port: int
+  username: str
+  remote_forwarding: 
+    - str
+  other_ssh_options: str?
+  force_keygen: bool

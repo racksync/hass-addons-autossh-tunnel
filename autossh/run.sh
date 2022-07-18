@@ -7,13 +7,9 @@ KEY_PATH=/data/ssh_keys
 HOSTNAME=$(jq --raw-output ".hostname" $CONFIG_PATH)
 SSH_PORT=$(jq --raw-output ".ssh_port" $CONFIG_PATH)
 USERNAME=$(jq --raw-output ".username" $CONFIG_PATH)
-
 REMOTE_FORWARDING=$(jq --raw-output ".remote_forwarding[]" $CONFIG_PATH)
-
 OTHER_SSH_OPTIONS=$(jq --raw-output ".other_ssh_options" $CONFIG_PATH)
 FORCE_GENERATION=$(jq --raw-output ".force_keygen" $CONFIG_PATH)
-
-#
 
 if [ "$FORCE_GENERATION" != "false" ]; then
   bashio::log.info "Deleting existing key pair due to set 'force_keygen'"
@@ -38,7 +34,6 @@ bashio::log.info "The public key is:"
 cat "${KEY_PATH}/autossh_rsa_key.pub"
 bashio::log.info "Add to '~/.ssh/authorize_keys' on your remote server"
 
-#
 
 if [ -z "$HOSTNAME" ]; then
   bashio::log.error "Please set 'hostname' in your config to the address of your remote server"
@@ -67,8 +62,6 @@ fi
 
 bashio::log.info "Remote server host keys:"
 ssh-keyscan -p $SSH_PORT $HOSTNAME || true
-
-#
 
 COMMAND="/usr/bin/autossh "\
 " -M 0 -N "\
