@@ -31,6 +31,7 @@ options:
     - 127.0.0.1:8080:192.168.0.10:80
   other_ssh_options: '-v'
   force_keygen: false
+  note: ""
 schema: 
   hostname: str
   ssh_port: int
@@ -39,3 +40,4 @@ schema:
     - str
   other_ssh_options: str?
   force_keygen: bool
+  note: str?
