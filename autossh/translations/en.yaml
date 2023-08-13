@@ -1,10 +1,10 @@
 configuration:
   hostname: 
-    name: Destination Hostname or IP
+    name: Destination Hostname/IP
     description: 
   ssh_port: 
     name: SSH Port 
-    description: Default is set to 22
+    description: Default (22)
   username: 
     name: SSH Username
     description: 
