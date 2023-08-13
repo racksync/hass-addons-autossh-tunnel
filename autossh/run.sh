@@ -11,6 +11,9 @@ REMOTE_FORWARDING=$(jq --raw-output ".remote_forwarding[]" $CONFIG_PATH)
 OTHER_SSH_OPTIONS=$(jq --raw-output ".other_ssh_options" $CONFIG_PATH)
 FORCE_GENERATION=$(jq --raw-output ".force_keygen" $CONFIG_PATH)
 
+bashio::log.info "Starting SSH Tunnel Services"
+bashio::log.info "Made with Love from Thailand, Bring to you by RACKSYNC 🇹🇭"
+
 if [ "$FORCE_GENERATION" != "false" ]; then
   bashio::log.info "Deleting existing key pair due to set 'force_keygen'"
   bashio::log.warning "Do not forget to unset 'force_keygen' in your add-on configuration"
