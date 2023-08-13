@@ -19,7 +19,7 @@ jobs:
       with:
         source_file: "autossh/"
         destination_repo: 'racksync/hass-addons-suite'
-        destination_folder: 'autossh/'
+        destination_folder: '/'
         user_email: 'devops@racksync.com'
         user_name: 'racksync'
         commit_message: 'autossh has been updated from legacy codebase'
