@@ -4,7 +4,7 @@ configuration:
     description: 
   ssh_port: 
     name: SSH Port 
-    description: Default is set to 22
+    description: Default (22)
   username: 
     name: SSH Username
     description: 
