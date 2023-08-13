@@ -1,6 +1,6 @@
 configuration:
   hostname: 
-    name: Destination Hostname or IP
+    name: Destination Hostname/IP
     description: 
   ssh_port: 
     name: SSH Port 
