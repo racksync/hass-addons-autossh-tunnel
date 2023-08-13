@@ -1,0 +1,25 @@
+name: Push to Add-Ons Suite
+on:
+  push:
+    paths:
+      - autossh/*
+    branches: main
+
+jobs:
+  push-autossh:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Push AutoSSH
+      uses: dmnemec/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_file: "autossh/"
+        destination_repo: 'racksync/hass-addons-suite'
+        destination_folder: 'autossh/'
+        user_email: 'devops@racksync.com'
+        user_name: 'racksync'
+        commit_message: 'autossh has been updated from legacy codebase'
