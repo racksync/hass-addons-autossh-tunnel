@@ -15,7 +15,7 @@ arch:
 startup: system
 hassio_api: false
 boot: auto
-host_network: true
+host_network: false
 apparmor: true
 host_pid: false
 homeassistant: 2023.8.1
