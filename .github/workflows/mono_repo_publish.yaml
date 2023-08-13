@@ -3,7 +3,7 @@ on:
   push:
     paths:
       - autossh/*
-    branches: main
+    branches: master
 
 jobs:
   push-autossh:
