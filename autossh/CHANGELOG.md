@@ -1,5 +1,11 @@
 ### CHANGELOG
 
+## 2023.8.1
+### Change
+  - Base Image 3.18
+  - Minimum Home Assistant 2023.8.1 Requirement
+  - Improve Security Rating
+
 ## 2022.07.19
 ### Change
 
