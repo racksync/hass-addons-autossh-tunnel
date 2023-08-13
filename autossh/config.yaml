@@ -21,8 +21,6 @@ host_pid: false
 homeassistant: 2023.8.1
 advanced: true
 stage: stable
-map: 
-  - config:rw
 options: 
   hostname: 'destination-address'
   ssh_port: 22
