@@ -62,15 +62,76 @@
 - [Home Automation Marketplace](https://www.facebook.com/groups/hatmarketplace)
 - [Home Automation Thailand Discord](https://discord.gg/Wc5CwnWkp4) 
 
-## [RACKSYNC CO., LTD.](https://racksync.com)
+## About RACKSYNC COMPANY LIMITED
 
-We helps our customers to create life easier across the border of entire technology stack with household and business solutions. We modernize life with Information Technology, Optimize and collect data to make everything possible, secure & trusty
-\
-\
-RACKSYNC COMPANY LIMITED \
-Suratthani, Thailand 84100 \
-Email : devops@racksync.com \
-Tel : +66 85 880 8885 
+**[🌐 RACKSYNC CO., LTD.](https://racksync.com)** - Innovative Cloud & Infrastructure Solutions
 
-[![Home Automation Thailand Discord](https://img.shields.io/discord/986181205504438345?style=for-the-badge)](https://discord.gg/Wc5CwnWkp4) [![Github](https://img.shields.io/github/followers/racksync?style=for-the-badge)](https://github.com/racksync) 
-[![WebsiteStatus](https://img.shields.io/website?down_color=grey&down_message=Offline&style=for-the-badge&up_color=green&up_message=Online&url=https%3A%2F%2Fracksync.com)](https://racksync.com)
+### 🏢 Company Overview
+RACKSYNC CO., LTD. is a leading technology company based in Bangkok, Thailand, specializing in innovative cloud and infrastructure solutions. We help our customers create life easier across the entire technology stack with household and business solutions, modernizing life with Information Technology to make everything possible, secure, and trustworthy.
+
+### 🚀 Our Services
+
+#### **Cloud & Infrastructure Services**
+- **Cloud Infrastructure Design & Implementation** - AWS, GCP, Azure solutions
+- **DevOps Implementation & Consulting** - CI/CD pipelines, automation, and optimization
+- **System Integration & Architecture** - Enterprise system design and integration
+- **Kubernetes & Container Orchestration** - Modern container management and deployment
+- **Infrastructure as Code (IaC)** - Terraform, Ansible, and automation frameworks
+- **Site Reliability Engineering (SRE)** - Monitoring, reliability, and performance optimization
+
+#### **Automation Solutions**
+- **Home Automation Solutions** - Smart home integration, voice-controlled systems, IoT deployment
+- **Industrial Automation** - SCADA systems, PLC programming, industrial IoT implementation
+- **Automated Deployment Pipelines** - GitHub Actions, GitLab CI, Jenkins workflows
+- **Monitoring & Observability** - Prometheus, Grafana, ELK stack implementations
+
+#### **Training & Consulting**
+- **On-the-Job Training** - Hands-on technology training for teams
+- **Professional Courses** - Certified technology and automation courses
+- **Technology Consulting** - Strategic technology planning and roadmap development
+
+### 🛠️ Technology Stack
+- **Cloud Platforms**: AWS, Google Cloud Platform, Microsoft Azure
+- **Containerization**: Docker, Kubernetes, Podman
+- **Infrastructure**: Terraform, Ansible, Packer
+- **CI/CD**: GitHub Actions, GitLab CI, Jenkins
+- **Monitoring**: Prometheus, Grafana, ELK Stack, Datadog
+- **Home Automation**: Home Assistant, Node-RED, MQTT, Zigbee, Z-Wave
+- **Industrial**: SCADA, PLC systems, Industrial IoT protocols
+
+### 🌍 Community & Social Presence
+- **GitHub**: [@racksync](https://github.com/racksync) - Open source contributions and projects
+- **Discord**: [Home Automation Thailand](https://discord.gg/Wc5CwnWkp4) - Active community participation
+- **Facebook**: [@racksync](https://facebook.com/racksync) - Updates and community engagement
+- **Twitter**: [@racksync](https://twitter.com/racksync) - Tech insights and updates
+
+### 📞 Contact Information
+**RACKSYNC COMPANY LIMITED**
+- **📍 Location**: Bangkok, Thailand (Previously Suratthani, Thailand 84100)
+- **📧 Email**:
+  - General: contact@racksync.com
+  - DevOps: devops@racksync.com
+  - Careers: people@racksync.com
+- **🌐 Website**: [www.racksync.com](https://racksync.com)
+- **📱 Phone**: +66 85 880 8885
+- **💼 LinkedIn**: [RACKSYNC Company Limited](https://linkedin.com/company/racksync)
+
+### 🤝 We're Hiring!
+RACKSYNC is actively looking for talented individuals to join our team. If you're passionate about cloud technologies, automation, and innovative solutions, we'd love to hear from you. Contact us at **people@racksync.com**.
+
+### 🏆 Why Choose RACKSYNC?
+- **Expertise**: Deep knowledge in cloud infrastructure and automation
+- **Innovation**: Cutting-edge solutions using latest technologies
+- **Reliability**: Proven track record with enterprise clients
+- **Community**: Active contributors to open source projects
+- **Support**: Comprehensive training and ongoing support
+- **Quality**: Security-first approach with best practices
+
+---
+
+**Connect with us:**
+
+[![Website](https://img.shields.io/website?down_color=grey&down_message=Offline&style=for-the-badge&up_color=green&up_message=Online&url=https%3A%2F%2Fracksync.com&label=Website)](https://racksync.com)
+[![GitHub followers](https://img.shields.io/github/followers/racksync?style=for-the-badge&label=GitHub&logo=github)](https://github.com/racksync)
+[![Discord](https://img.shields.io/discord/986181205504438345?style=for-the-badge&logo=discord&label=Discord)](https://discord.gg/Wc5CwnWkp4)
+[![Facebook](https://img.shields.io/badge/Facebook-racksync-blue?style=for-the-badge&logo=facebook)](https://facebook.com/racksync)
