@@ -1,11 +1,22 @@
-# Home Assistant AutoSSH Tunnel 
+# Home Assistant AutoSSH Tunnel
 
-[![Base Image](https://img.shields.io/badge/Base%20Image-3.18-blue)](https://github.com/home-assistant/docker-base)  [![alpine-armhf](https://img.shields.io/badge/armhf-yes-brightgreen)](https://alpinelinux.org/releases/) 
-[![alpine-armv7](https://img.shields.io/badge/armv7-yes-brightgreen)](https://alpinelinux.org/releases/) 
-[![alpine-aarch64](https://img.shields.io/badge/aarch64-yes-brightgreen)](https://alpinelinux.org/releases/) 
-[![alpine-amd64](https://img.shields.io/badge/amd64-yes-brightgreen)](https://alpinelinux.org/releases/) 
+[![Base Image](https://img.shields.io/badge/Base%20Image-3.22-blue)](https://github.com/home-assistant/docker-base)  [![alpine-armhf](https://img.shields.io/badge/armhf-yes-brightgreen)](https://alpinelinux.org/releases/)
+[![alpine-armv7](https://img.shields.io/badge/armv7-yes-brightgreen)](https://alpinelinux.org/releases/)
+[![alpine-aarch64](https://img.shields.io/badge/aarch64-yes-brightgreen)](https://alpinelinux.org/releases/)
+[![alpine-amd64](https://img.shields.io/badge/amd64-yes-brightgreen)](https://alpinelinux.org/releases/)
 [![alpine-i386](https://img.shields.io/badge/i386-yes-brightgreen)](https://alpinelinux.org/releases/)
 [![autossh-tunnel-release](https://img.shields.io/github/v/release/racksync/hass-addons-autossh-tunnel)](https://github.com/racksync/hass-addons-autossh-tunnel/releases) [![last commit](https://img.shields.io/github/last-commit/racksync/hass-addons-autossh-tunnel)](https://github.com/racksync/hass-addons-autossh-tunnel/commit/)
+
+## 🚨 Legacy Repository Notice
+
+**This is a legacy repository** that automatically syncs changes to the main mono repository:
+👉 [https://github.com/racksync/hass-addons-suite/tree/main/autossh](https://github.com/racksync/hass-addons-suite/tree/main/autossh)
+
+### How it works:
+- Changes pushed to the `main` branch in this repository are automatically synced to the mono repository
+- GitHub Actions handles the deployment and validation
+- Use this repository for development and testing
+- The mono repository contains the final published version
 
 
 ## How to configure

@@ -1,28 +1,119 @@
-# This is a basic workflow to help you get started with Actions
+name: Slack Notifications
 
-name: Slack
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
+    types: [opened, closed, reopened]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  slack:
-    # The type of runner that the job will run on
+  slack-notify:
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: Notify slack
+    - name: Notify slack on PR
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
       uses: pullreminders/slack-action@master
       with:
-        args: '{\"channel\":\"C039879A98V\",\"text\":\"hass-addons-autossh-tunnal >> pull requested\"}'
+        args: |
+          {
+            "channel": "C039879A98V",
+            "text": "🚀 *AutoSSH Tunnel Add-on Pull Request*",
+            "attachments": [
+              {
+                "color": "${{ github.event.pull_request.merged == 'true' && 'good' || 'warning' }}",
+                "fields": [
+                  {
+                    "title": "Action",
+                    "value": "${{ github.event.action == 'opened' && '🆕 Opened' || github.event.action == 'closed' && github.event.pull_request.merged == 'true' && '✅ Merged' || '🔄 Reopened' }}",
+                    "short": true
+                  },
+                  {
+                    "title": "PR Number",
+                    "value": "#${{ github.event.pull_request.number }}",
+                    "short": true
+                  },
+                  {
+                    "title": "Title",
+                    "value": "${{ github.event.pull_request.title }}",
+                    "short": false
+                  },
+                  {
+                    "title": "Author",
+                    "value": "${{ github.event.pull_request.user.login }}",
+                    "short": true
+                  },
+                  {
+                    "title": "Branch",
+                    "value": "${{ github.event.pull_request.head.ref }}",
+                    "short": true
+                  }
+                ],
+                "actions": [
+                  {
+                    "type": "button",
+                    "text": "View Pull Request",
+                    "url": "${{ github.event.pull_request.html_url }}"
+                  }
+                ]
+              }
+            ]
+          }
+
+  slack-deployment:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' && contains(github.event.head_commit.modified, 'autossh/')
+
+    steps:
+    - name: Notify slack of deployment
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      uses: pullreminders/slack-action@master
+      with:
+        args: |
+          {
+            "channel": "C039879A98V",
+            "text": "🚀 *AutoSSH Tunnel Changes Pushed to Main*",
+            "attachments": [
+              {
+                "color": "good",
+                "fields": [
+                  {
+                    "title": "Repository",
+                    "value": "hass-addons-autossh-tunnel",
+                    "short": true
+                  },
+                  {
+                    "title": "Branch",
+                    "value": "main",
+                    "short": true
+                  },
+                  {
+                    "title": "Commit",
+                    "value": "${{ github.event.head_commit.message }}",
+                    "short": false
+                  },
+                  {
+                    "title": "Author",
+                    "value": "${{ github.event.head_commit.author.name }}",
+                    "short": true
+                  }
+                ],
+                "actions": [
+                  {
+                    "type": "button",
+                    "text": "View Commit",
+                    "url": "https://github.com/racksync/hass-addons-autossh-tunnel/commit/${{ github.sha }}"
+                  },
+                  {
+                    "type": "button",
+                    "text": "View Actions",
+                    "url": "https://github.com/racksync/hass-addons-autossh-tunnel/actions"
+                  }
+                ]
+              }
+            ]
+          }

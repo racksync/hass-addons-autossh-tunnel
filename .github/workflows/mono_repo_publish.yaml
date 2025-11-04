@@ -2,24 +2,122 @@ name: Push to Add-Ons Suite
 on:
   push:
     paths:
-      - autossh/*
-    branches: master
+      - autossh/**
+      - .github/workflows/mono_repo_publish.yaml
+    branches: main
+
+  workflow_dispatch:
 
 jobs:
   push-autossh:
     runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    permissions:
+      contents: write
 
-    - name: Push AutoSSH
-      uses: dmnemec/copy_file_to_another_repo_action@main
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
       with:
-        source_file: "autossh/"
-        destination_repo: 'racksync/hass-addons-suite'
-        destination_folder: '/'
-        user_email: 'devops@racksync.com'
-        user_name: 'racksync'
-        commit_message: 'autossh has been updated from legacy codebase'
+        fetch-depth: 0
+
+    - name: Setup Git identity
+      run: |
+        git config --global user.name "racksync-bot"
+        git config --global user.email "devops@racksync.com"
+
+    - name: Validate configuration files
+      run: |
+        echo "Validating configuration files..."
+        cd autossh
+        python3 -c "import yaml; yaml.safe_load(open('config.yaml'))" || exit 1
+        python3 -c "import yaml; yaml.safe_load(open('build.yaml'))" || exit 1
+        bash -n run.sh || exit 1
+        echo "✅ All configuration files validated"
+
+    - name: Extract version information
+      id: version
+      run: |
+        VERSION=$(python3 -c "import yaml; print(yaml.safe_load(open('autossh/config.yaml'))['version'])")
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "📦 Add-on version: $VERSION"
+
+    - name: Clone mono repository
+      run: |
+        git clone https://racksync:${{ secrets.API_TOKEN_GITHUB }}@github.com/racksync/hass-addons-suite.git mono-repo
+        cd mono-repo
+        git config --global user.name "racksync-bot"
+        git config --global user.email "devops@racksync.com"
+
+    - name: Sync files to mono repository
+      run: |
+        echo "🔄 Syncing files to mono repository..."
+
+        cd mono-repo
+        if [ -d "autossh" ]; then
+          cp -r autossh autossh.backup
+          echo "📋 Created backup of existing autossh directory"
+        fi
+
+        rm -rf autossh
+        cp -r ../autossh .
+        chmod +x autossh/run.sh
+
+        echo "✅ Files synced successfully"
+
+    - name: Check for changes
+      id: changes
+      run: |
+        cd mono-repo
+        if git diff --quiet HEAD -- autossh/; then
+          echo "changed=false" >> $GITHUB_OUTPUT
+          echo "ℹ️ No changes detected"
+        else
+          echo "changed=true" >> $GITHUB_OUTPUT
+          echo "🔄 Changes detected in autossh files"
+        fi
+
+    - name: Commit and push changes
+      if: steps.changes.outputs.changed == 'true'
+      run: |
+        cd mono-repo
+        git add autossh/
+        git commit -m "feat: AutoSSH Tunnel v${{ steps.version.outputs.version }} - Updated from legacy repository"
+        git push origin main
+        echo "✅ Changes pushed to mono repository successfully"
+
+    - name: Create release tag
+      if: steps.changes.outputs.changed == 'true'
+      run: |
+        cd mono-repo
+        TAG="autossh-v${{ steps.version.outputs.version }}"
+        if ! git rev-parse "$TAG" >/dev/null 2>&1; then
+          git tag -a "$TAG" -m "AutoSSH Tunnel v${{ steps.version.outputs.version }}"
+          git push origin "$TAG"
+          echo "🏷️ Created tag: $TAG"
+        else
+          echo "ℹ️ Tag $TAG already exists"
+        fi
+
+    - name: Notify Slack of sync completion
+      if: steps.changes.outputs.changed == 'true'
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      uses: pullreminders/slack-action@master
+      with:
+        args: '{"channel": "C039879A98V", "text": "✅ *AutoSSH Tunnel Successfully Synced to Mono Repository*", "attachments": [{"color": "good", "fields": [{"title": "Version", "value": "${{ steps.version.outputs.version }}", "short": true}, {"title": "Status", "value": "Deployed", "short": true}, {"title": "Source Commit", "value": "${{ github.sha }}", "short": false}], "actions": [{"type": "button", "text": "View Source Repo", "url": "https://github.com/racksync/hass-addons-autossh-tunnel/commit/${{ github.sha }}"}, {"type": "button", "text": "View Mono Repo", "url": "https://github.com/racksync/hass-addons-suite/tree/main/autossh"}, {"type": "button", "text": "View Workflow", "url": "https://github.com/racksync/hass-addons-autossh-tunnel/actions/runs/${{ github.run_id }}"}]}]}'
+
+    - name: Summary
+      run: |
+        echo "## 🚀 AutoSSH Sync Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Version:** ${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Changes:** ${{ steps.changes.outputs.changed == 'true' && 'Yes' || 'No' }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Source:** [Legacy Repository](https://github.com/racksync/hass-addons-autossh-tunnel/commit/${{ github.sha }})" >> $GITHUB_STEP_SUMMARY
+        echo "**Target:** [Mono Repository](https://github.com/racksync/hass-addons-suite/tree/main/autossh)" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        if [ "${{ steps.changes.outputs.changed }}" == "true" ]; then
+          echo "✅ Successfully synced to mono repository" >> $GITHUB_STEP_SUMMARY
+          echo "📱 Slack notification sent" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "ℹ️ No changes to sync" >> $GITHUB_STEP_SUMMARY
+        fi
