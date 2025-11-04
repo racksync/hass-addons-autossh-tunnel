@@ -98,14 +98,7 @@ jobs:
           echo "ℹ️ Tag $TAG already exists"
         fi
 
-    - name: Notify Slack of sync completion
-      if: steps.changes.outputs.changed == 'true'
-      env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      uses: pullreminders/slack-action@master
-      with:
-        args: '{"channel": "C039879A98V", "text": "✅ *AutoSSH Tunnel Successfully Synced to Mono Repository*", "attachments": [{"color": "good", "fields": [{"title": "Version", "value": "${{ steps.version.outputs.version }}", "short": true}, {"title": "Status", "value": "Deployed", "short": true}, {"title": "Source Commit", "value": "${{ github.sha }}", "short": false}], "actions": [{"type": "button", "text": "View Source Repo", "url": "https://github.com/racksync/hass-addons-autossh-tunnel/commit/${{ github.sha }}"}, {"type": "button", "text": "View Mono Repo", "url": "https://github.com/racksync/hass-addons-suite/tree/main/autossh"}, {"type": "button", "text": "View Workflow", "url": "https://github.com/racksync/hass-addons-autossh-tunnel/actions/runs/${{ github.run_id }}"}]}]}'
-
+    
     - name: Summary
       run: |
         echo "## 🚀 AutoSSH Sync Summary" >> $GITHUB_STEP_SUMMARY
@@ -117,7 +110,6 @@ jobs:
         echo "" >> $GITHUB_STEP_SUMMARY
         if [ "${{ steps.changes.outputs.changed }}" == "true" ]; then
           echo "✅ Successfully synced to mono repository" >> $GITHUB_STEP_SUMMARY
-          echo "📱 Slack notification sent" >> $GITHUB_STEP_SUMMARY
         else
           echo "ℹ️ No changes to sync" >> $GITHUB_STEP_SUMMARY
         fi
